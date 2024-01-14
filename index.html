@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="form-box">
+        <h1 id="title">Sign Up</h1>
+        <form action="" name="login" method="post">
+          <div class="input-group">
+            <div class="input-field" id="nameField">
+              <i class="fa-regular fa-user"></i>
+              <input type="text" placeholder="Name" required name="name" />
+            </div>
+            <div class="input-field">
+              <i class="fa-regular fa-envelope"></i>
+              <input type="email" placeholder="Email" required name="email"  autocomplete="off"/>
+            </div>
+            <div class="input-field">
+              <i class="fa-solid fa-lock"></i>
+              <input
+                type="password"
+                placeholder="Password"
+                required
+                id="psw"
+                name="password"
+                onkeyup="check()"
+              />
+            </div>
+            <div class="input-field">
+              <i class="fa-solid fa-lock"></i>
+              <input
+                type="password"
+                placeholder="Confirm Password"
+                required
+                id="cpsw"
+                name="Confirmpassword"
+                onkeyup="check()"
+              />
+            </div>
+            <p id="message"></p>
+          </div>
+          <div class="btn-field">
+            <button type="submit" id="signup">Sign up</button>
+            <button type="submit" class="disable" id="login">login</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script>
+      let signup = document.getElementById("signup");
+      let login = document.getElementById("login");
+      let nameField = document.getElementById("nameField");
+      let title = document.getElementById("title");
+      let ischecked = true;
+
+      login.onclick = () => {
+        // nameField.style.maxHeight = "0";
+        title.innerHTML = "Login";
+        signup.classList.add("disable");
+        login.classList.remove("disable");
+        if (ischecked) {
+          nameField.style.display = "none";
+        }
+      };
+      signup.onclick = () => {
+        // nameField.style.maxHeight = "60px";
+        title.innerHTML = "Sign Up";
+        signup.classList.remove("disable");
+        login.classList.add("disable");
+        if (ischecked) {
+          nameField.style.display = "flex";
+        }
+      };
+      let check = () => {
+        if (
+          document.getElementById("psw").value ==
+          document.getElementById("cpsw").value
+        ) {
+          document.getElementById("message").style.color = "green";
+          document.getElementById("message").innerHTML = "Matching";
+        } else {
+          document.getElementById("message").style.color = "red";
+          document.getElementById("message").innerHTML =
+            " Password is Not Matching";
+        }
+      };
+    </script>
+  </body>
+</html>
